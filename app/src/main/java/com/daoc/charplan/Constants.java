@@ -5,6 +5,8 @@ package com.daoc.charplan;
  */
 public class Constants {
 
+    public static final boolean DEBUG = true;
+
     // Realm IDs
     public static final int NO_REALM = 0;
     public static final int ALBION_ID = 1;

@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import com.daoc.charplan.Constants;
 import com.daoc.charplan.R;
 import com.daoc.charplan.model.PlayerClass;
+import com.daoc.charplan.provider.DbHelper;
 import com.daoc.charplan.ui.character.CharacterActivity;
 import com.daoc.charplan.ui.common.BaseFragment;
 import com.daoc.charplan.util.Log;
@@ -117,7 +118,7 @@ public class ClassFragment extends BaseFragment implements ClassInterface {
          */
         @Override
         protected Void doInBackground(Void... params) {
-            //TODO: mClasses = 'read from DB'
+            mClasses = DbHelper.getInstance(getContext()).getClasses(mRealmId);
             return null;
         }
 

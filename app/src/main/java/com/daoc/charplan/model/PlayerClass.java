@@ -2,6 +2,7 @@ package com.daoc.charplan.model;
 
 import android.database.Cursor;
 
+import com.daoc.charplan.provider.DbContract;
 import com.daoc.charplan.ui.common.AbstractListItem;
 
 import java.io.Serializable;
@@ -17,8 +18,9 @@ public class PlayerClass extends AbstractListItem implements Serializable {
     private int mRealmId;
     private String mSubclass;
     private double mLevel;
-    //private RealmRank mRealmRank;
-    //TODO: list of RAs
+    private int mRealmRank;
+    private int mMasterLevel;
+    private int mChampionLevel;
 
     public int getId() {
         return mId;
@@ -49,10 +51,29 @@ public class PlayerClass extends AbstractListItem implements Serializable {
         return mLevel;
     }
 
-    //TODO: nest realm rank?
-    /*public RealmRank getRealmRank() {
+    public void setRR(int rr) {
+        mRealmRank = rr;
+    }
+
+    public int getRR() {
         return mRealmRank;
-    }*/
+    }
+
+    public void setML(int ml) {
+        mMasterLevel = ml;
+    }
+
+    public int getML() {
+        return mMasterLevel;
+    }
+
+    public void setCL(int cl) {
+        mChampionLevel = cl;
+    }
+
+    public int getCL() {
+        return mChampionLevel;
+    }
 
     /**
      * Constructed from database.
@@ -62,15 +83,17 @@ public class PlayerClass extends AbstractListItem implements Serializable {
             throw new UnsupportedOperationException("Cursor is null or closed");
         }
         final PlayerClass playerClass = new PlayerClass();
-        //TODO: load player class from db
-        /*playerClass.mId = cursor.getInt(cursor.getColumnIndex(DbContract.TableClasses._ID));
+        playerClass.mId = cursor.getInt(cursor.getColumnIndex(DbContract.TableClasses._ID));
         playerClass.mName = cursor.getString(cursor.getColumnIndex(DbContract.TableClasses.NAME));
         playerClass.mRealm = cursor.getString(
                 cursor.getColumnIndex(DbContract.TableClasses.REALM));
         playerClass.mSubclass = cursor.getString(
                 cursor.getColumnIndex(DbContract.TableClasses.SUBCLASS));
-        playerClass.mRealmId = getIdFromRealm(playerClass.mRealm);
-        playerClass.mRealmRank = new RealmRank(playerClass.mRealmId);*/
+        playerClass.mRealmId = cursor.getInt(cursor.getColumnIndex(DbContract.TableClasses._ID));
+
+        playerClass.mRealmRank = 10; //RR1L0 is min
+        playerClass.mMasterLevel = 0;
+        playerClass.mChampionLevel = 0;
 
         return playerClass;
     }
