@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Menu that contains common items -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- Menu item that makes current character level 50 -->
+    <item
+        android:id="@+id/menu_lvl50"
+        android:orderInCategory="1"
+        android:title="@string/menu_level50"
+        app:showAsAction="never" />
+
+    <!-- Menu item that makes current character level 1 -->
+    <item
+        android:id="@+id/menu_lvl1"
+        android:orderInCategory="1"
+        android:title="@string/menu_level1"
+        app:showAsAction="never" />
+</menu>
