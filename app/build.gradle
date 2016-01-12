@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'findbugs'
 
 android {
     compileSdkVersion 23
@@ -28,4 +29,27 @@ dependencies {
     compile 'com.android.support:support-v13:23.1.1'
     compile 'com.google.code.findbugs:annotations:3.0.0'
     compile 'com.readystatesoftware.sqliteasset:sqliteassethelper:2.0.1'
+}
+
+task findbugs(type: FindBugs) {
+    ignoreFailures = true
+    effort = "default"
+    reportLevel = "medium"
+    excludeFilter = file("${project.rootDir}/findbugs-exclude.xml")
+    classes = files ("${project.buildDir}/intermediates/classes") {
+        builtBy 'build'
+    }
+    println(classes.files)
+    source = ['src']
+    classpath = files()
+    reports {
+        html.enabled = true
+        xml.enabled = false
+        html {
+            destination "$project.buildDir/findbugs/findbugs-output.html"
+        }
+        xml {
+            destination "$project.buildDir/findbugs/findbugs-output.xml"
+        }
+    }
 }
