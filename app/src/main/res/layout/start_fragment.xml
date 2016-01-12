@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- SlidingTabLayout used for displaying tabs at the top of the layout -->
+    <com.daoc.charplan.ui.common.SlidingTabLayout
+        android:id="@+id/start_tab_layout"
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!-- ViewPager to display and slide between fragments -->
+    <android.support.v4.view.ViewPager
+        android:id="@+id/start_pager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/start_tab_layout" />
+</RelativeLayout>

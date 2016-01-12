@@ -8,4 +8,39 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- Style used for ViewHolder cards -->
+    <style name="ViewHolderCard">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/material_list_row_height</item>
+        <item name="android:layout_marginBottom">@dimen/card_view_designation_margin_bottom</item>
+    </style>
+
+    <!-- Style used for Separator title TextView -->
+    <style name="SeparatorTitleTextView">
+        <item name="android:layout_marginStart">@dimen/spacing_medium</item>
+        <item name="android:layout_marginTop">@dimen/spacing_medium</item>
+        <item name="android:layout_marginEnd">@dimen/spacing_medium</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <!-- Style used for delimiters -->
+    <style name="ListItemDelimiter">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/delimiter</item>
+        <item name="android:layout_marginBottom">@dimen/spacing_medium</item>
+    </style>
+
+    <!-- Style for in-fragment titles -->
+    <style name="InFragmentTitle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/spacing_medium</item>
+        <item name="android:layout_marginBottom">@dimen/spacing_small</item>
+        <item name="android:layout_marginStart">@dimen/spacing_medium</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textSize">@dimen/text_large</item>
+    </style>
+
 </resources>

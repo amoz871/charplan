@@ -5,4 +5,9 @@
     <string name="menu_settings">Settings</string>
     <string name="menu_level1">Make Level 1</string>
     <string name="menu_level50">Make Level 50</string>
+    <!-- Realm strings -->
+    <string name="albion">Albion</string>
+    <string name="hibernia">Hibernia</string>
+    <string name="midgard">Midgard</string>
+    <string name="unknown">Unknown</string>
 </resources>

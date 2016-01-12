@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="albionRed">#FF0000</color>
+    <color name="midgardBlue">#0000FF</color>
+    <color name="hiberniaGreen">#00FF00</color>
+    <color name="delimiter">#000000</color>
+    <color name="colorPrimary">#000000</color>
+    <color name="colorPrimaryDark">#8b1616</color>
+    <color name="colorAccent">#bace1d</color>
+    <color name="colorLightGray">#E0E0E0</color>
+    <color name="colorDarkerGray">@android:color/darker_gray</color>
+    <color name="colorBaseSpec">#000033</color>
+</resources>
