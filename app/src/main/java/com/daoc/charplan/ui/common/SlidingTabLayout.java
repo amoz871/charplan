@@ -3,12 +3,9 @@ package com.daoc.charplan.ui.common;
 import android.content.Context;
 import android.database.DataSetObserver;
 import android.graphics.Color;
-import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.util.AttributeSet;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
@@ -131,6 +128,10 @@ public class SlidingTabLayout extends HorizontalScrollView {
                 if (layoutParams != null) {
                     layoutParams.width = 0;
                     layoutParams.weight = 1;
+                    tabView.setLayoutParams(layoutParams);
+                    Log.d("Layout params set to even weight");
+                } else {
+                    Log.e("Layout params NULL!");
                 }
             }
 
