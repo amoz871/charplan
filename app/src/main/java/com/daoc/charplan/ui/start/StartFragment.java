@@ -22,17 +22,15 @@ import java.util.ArrayList;
  */
 public class StartFragment extends BaseFragment {
 
+    /**
+     * Identifier for realm.
+     */
     public static final String REALM_BUNDLE_IDENTIFIER = "realm";
 
     /**
      * Identifier for which current page the user is viewing in the {@link ViewPager}.
      */
     private static final String CURRENT_PAGE_BUNDLE_IDENTIFIER = "currentPage";
-
-    /**
-     * Bundle used between this {@link Fragment} and its child fragments.
-     */
-    private final Bundle mBundle = new Bundle();
 
     /**
      * {@link ViewPager} to display the fragments.
@@ -52,7 +50,7 @@ public class StartFragment extends BaseFragment {
             LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
         setRetainInstance(true);
-        Log.d("Created StartFragment");
+        Log.d("StartFragment created");
         final View view = inflater.inflate(R.layout.start_fragment, container, false);
         initializeFragments();
         initializeViewPager(view);
