@@ -13,6 +13,7 @@ import com.daoc.charplan.Constants;
 import com.daoc.charplan.R;
 import com.daoc.charplan.ui.common.BaseFragment;
 import com.daoc.charplan.ui.common.SlidingTabLayout;
+import com.daoc.charplan.util.Log;
 
 import java.util.ArrayList;
 
@@ -51,6 +52,7 @@ public class StartFragment extends BaseFragment {
             LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
         setRetainInstance(true);
+        Log.d("Created StartFragment");
         final View view = inflater.inflate(R.layout.start_fragment, container, false);
         initializeFragments();
         initializeViewPager(view);

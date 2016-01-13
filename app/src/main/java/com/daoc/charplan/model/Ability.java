@@ -13,7 +13,6 @@ public class Ability extends AbstractListItem implements Serializable {
     protected static int mLevel;
     protected static String mName;
 
-    @Override
     public int getId() {
         return mId;
     }

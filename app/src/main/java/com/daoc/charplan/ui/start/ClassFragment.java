@@ -37,13 +37,23 @@ public class ClassFragment extends BaseFragment implements ClassInterface {
     private List<PlayerClass> mClasses;
 
     /**
-     *
+     * Custom {@link android.support.v7.widget.RecyclerView.Adapter}.
      */
     private ClassAdapter mClassAdapter;
 
-    public static final String REALM_BUNDLE_IDENTIFIER = "realm";
-    public static final String CLASS_BUNDLE_IDENTIFIER = "class";
+    /**
+     * {@link Bundle} identifier for realm.
+     */
+    private static final String REALM_BUNDLE_IDENTIFIER = "realm";
 
+    /**
+     * {@link Bundle} identifier for class.
+     */
+    private static final String CLASS_BUNDLE_IDENTIFIER = "class";
+
+    /**
+     * Realm ID
+     */
     private int mRealmId;
 
     /**
@@ -52,6 +62,7 @@ public class ClassFragment extends BaseFragment implements ClassInterface {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
+        Log.d("Created ClassFragment");
         final View view = inflater.inflate(R.layout.classes_fragment, container, false);
         initializeRecyclerView(view);
         return view;
@@ -118,6 +129,7 @@ public class ClassFragment extends BaseFragment implements ClassInterface {
          */
         @Override
         protected Void doInBackground(Void... params) {
+            Log.d("Getting classes for realm:" + mRealmId);
             mClasses = DbHelper.getInstance(getContext()).getClasses(mRealmId);
             return null;
         }
@@ -128,6 +140,7 @@ public class ClassFragment extends BaseFragment implements ClassInterface {
         @Override
         protected void onPostExecute(Void v) {
             mClassAdapter.addContent(mClasses);
+            Log.d("Found " + mClassAdapter.getItemCount() + " classes");
         }
     }
 }

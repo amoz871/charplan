@@ -18,12 +18,6 @@ public interface ListItem {
     void setViewType(ListType viewType);
 
     /**
-     * Retrieve the ID for the ListItem
-     * @return ID of ListItem
-     */
-    int getId();
-
-    /**
      * Retrieve the title for the ListItem.
      * @return title of ListItem.
      */

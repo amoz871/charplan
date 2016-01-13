@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQueryBuilder;
+import android.support.annotation.NonNull;
 
 import com.daoc.charplan.Constants;
 import com.daoc.charplan.model.PlayerClass;
@@ -31,15 +32,6 @@ public class DbHelper extends SQLiteAssetHelper {
     }
 
     /**
-     * Queries a database for the all the {@link PlayerClass}es.
-     *
-     * @return The result of the query.
-     */
-    public List<PlayerClass> getClasses() {
-        return getClasses(0);
-    }
-
-    /**
      * Queries a database for the classes. If ID is 0 all classes will get returned.
      *
      * @param realmId The realm to get classes for, see {@link Constants}.
@@ -59,7 +51,7 @@ public class DbHelper extends SQLiteAssetHelper {
             case Constants.HIBERNIA_ID:
             case Constants.MIDGARD_ID:
                 selection = DbContract.TableClasses.REALM + " = ?";
-                selectionArgs = new String[]{String.valueOf(realmId)};
+                selectionArgs = new String[]{getRealmFromId(realmId)};
                 break;
             case Constants.NO_REALM:
                 selection = null;
@@ -88,5 +80,25 @@ public class DbHelper extends SQLiteAssetHelper {
         qb.setTables(table);
 
         return qb.query(db, projection, selection, selectionArgs, null, null, null);
+    }
+
+    /**
+     * Converts the realm ID into a {@link String} that can be used to query the database.
+     *
+     * @param id The realm ID.
+     * @return The corresponding realm {@link String}.
+     */
+    @NonNull
+    private static String getRealmFromId(int id) {
+        switch (id) {
+            case 1:
+                return "Albion";
+            case 2:
+                return "Hibernia";
+            case 3:
+                return "Midgard";
+            default:
+                throw new IllegalArgumentException("Trying to get Realm from id: " + id);
+        }
     }
 }

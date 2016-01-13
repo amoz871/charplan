@@ -6,9 +6,9 @@ import com.daoc.charplan.Constants;
 import com.daoc.charplan.provider.DbContract;
 import com.daoc.charplan.ui.common.AbstractListItem;
 
-import org.jetbrains.*;
-
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A model containing all the information specific for a PlayerClass.
@@ -21,14 +21,12 @@ public class PlayerClass extends AbstractListItem implements Serializable {
     private static String mRealm;
     private static int mRealmId;
     private static String mSubclass;
-    private static double mMultiplier;
-    private static int[] mSpecIds;
-    private static int[] mRaIds;
-    private static int[] mMlIds;
-    private static int[] mClIds;
 
     // Fields assigned on selection
-    private Spec[] mSpecs;
+    private static double mMultiplier;
+    private List<Ability> mAbilities;
+    private List<Spec> mSpecs;
+    // TODO: add the rest
 
     // Dynamic fields to be used after selection
     private double mLevel;
@@ -36,8 +34,15 @@ public class PlayerClass extends AbstractListItem implements Serializable {
     private int mMasterLevel;
     private int mChampionLevel;
 
+    /**
+     * Private constructor, only create from database.
+     */
+    private PlayerClass() {
+        mAbilities = new ArrayList<>();
+        mSpecs = new ArrayList<>();
+    }
+
     // Items from creation
-    @Override
     public int getId() {
         return mId;
     }
@@ -63,6 +68,24 @@ public class PlayerClass extends AbstractListItem implements Serializable {
         return mSubclass;
     }
 
+    // Items assigned on selection
+    public void addAbilities(List<Ability> abilities) {
+        mAbilities.addAll(abilities);
+    }
+
+    public List<Ability> getAbilities() {
+        return mAbilities;
+    }
+
+    public void addSpecs(List<Spec> specs) {
+        mSpecs.addAll(specs);
+    }
+
+    public List<Spec> getSpecs() {
+        return mSpecs;
+    }
+
+    // Dynamic items
     public void setLevel(double level) {
         mLevel = level;
     }

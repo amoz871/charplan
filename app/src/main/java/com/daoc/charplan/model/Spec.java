@@ -9,7 +9,6 @@ import java.io.Serializable;
  */
 public class Spec extends AbstractListItem implements Serializable {
 
-    @Override
     public int getId() {
         return 0;
     }
