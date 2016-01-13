@@ -78,21 +78,27 @@ public class PlayerClass extends AbstractListItem implements Serializable {
     /**
      * Constructed from database.
      */
-    public static PlayerClass loadFrom(Cursor cursor) {
+    public PlayerClass loadFrom(Cursor cursor) {
         if (cursor == null || cursor.isClosed()) {
             throw new UnsupportedOperationException("Cursor is null or closed");
         }
         final PlayerClass playerClass = new PlayerClass();
         playerClass.mId = cursor.getInt(cursor.getColumnIndex(DbContract.TableClasses._ID));
+
+        // Name, realm and subclass will depend on language (EN/FR/DE)
         playerClass.mName = cursor.getString(cursor.getColumnIndex(DbContract.TableClasses.NAME));
         playerClass.mRealm = cursor.getString(
                 cursor.getColumnIndex(DbContract.TableClasses.REALM));
+        playerClass.mRealmId = getIdForRealm(mRealm);
+        // Only used for classic
         playerClass.mSubclass = cursor.getString(
                 cursor.getColumnIndex(DbContract.TableClasses.SUBCLASS));
-        playerClass.mRealmId = cursor.getInt(cursor.getColumnIndex(DbContract.TableClasses._ID));
 
-        playerClass.mRealmRank = 10; //RR1L0 is min
+        // RR1L0 is min
+        playerClass.mRealmRank = 10;
+        // Only used for live
         playerClass.mMasterLevel = 0;
+        // Only used for live
         playerClass.mChampionLevel = 0;
 
         return playerClass;
@@ -104,5 +110,26 @@ public class PlayerClass extends AbstractListItem implements Serializable {
     @Override
     public ListType getViewType() {
         return ListType.CLASS;
+    }
+
+    /**
+     * Gets the ID of the realm from the string retrieved from database
+     *
+     * @param realm The name of the realm
+     * @return Realm ID, see #Constrants
+     */
+    private int getIdForRealm(String realm) {
+        switch (realm) {
+            // TODO: add FR and DE strings
+            case "Albion":
+                return 1;
+            case "Hibernia":
+                return 2;
+            case "Midgard":
+                return 3;
+            default:
+                throw new IllegalArgumentException("Trying to get realm ID for unknown string: "
+                        + realm + " for class: " + mName);
+        }
     }
 }
