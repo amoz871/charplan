@@ -1,10 +1,5 @@
-/*
- * Copyright (C) 1998-2015 UEFA.
- * All rights, including trade secret rights, reserved.
- */
 package com.daoc.charplan.ui.start;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;

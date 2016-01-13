@@ -5,6 +5,7 @@ import android.database.Cursor;
 import com.daoc.charplan.Constants;
 import com.daoc.charplan.provider.DbContract;
 import com.daoc.charplan.ui.common.AbstractListItem;
+import com.daoc.charplan.util.Log;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -15,12 +16,12 @@ import java.util.List;
  */
 public class PlayerClass extends AbstractListItem implements Serializable {
 
-    // Static fields assigned at creation.
-    private static int mId;
-    private static String mName;
-    private static String mRealm;
-    private static int mRealmId;
-    private static String mSubclass;
+    // Fields assigned at creation.
+    private int mId;
+    private String mName;
+    private String mRealm;
+    private int mRealmId;
+    private String mSubclass;
 
     // Fields assigned on selection
     private static double mMultiplier;
@@ -126,15 +127,15 @@ public class PlayerClass extends AbstractListItem implements Serializable {
             throw new UnsupportedOperationException("Cursor is null or closed");
         }
         final PlayerClass playerClass = new PlayerClass();
-        mId = cursor.getInt(cursor.getColumnIndex(DbContract.TableClasses._ID));
+        playerClass.mId = cursor.getInt(cursor.getColumnIndex(DbContract.TableClasses._ID));
 
         // Name, realm and subclass will depend on language (EN/FR/DE)
-        mName = cursor.getString(cursor.getColumnIndex(DbContract.TableClasses.NAME));
-        mRealm = cursor.getString(
+        playerClass.mName = cursor.getString(cursor.getColumnIndex(DbContract.TableClasses.NAME));
+        playerClass.mRealm = cursor.getString(
                 cursor.getColumnIndex(DbContract.TableClasses.REALM));
-        mRealmId = getIdForRealm(mRealm);
+        playerClass.mRealmId = getIdForRealm(playerClass.mRealm);
         // Only used for classic
-        mSubclass = cursor.getString(
+        playerClass.mSubclass = cursor.getString(
                 cursor.getColumnIndex(DbContract.TableClasses.SUBCLASS));
 
         // RR1L0 is min
@@ -172,7 +173,7 @@ public class PlayerClass extends AbstractListItem implements Serializable {
                 return Constants.MIDGARD_ID;
             default:
                 throw new IllegalArgumentException("Trying to get realm ID for unknown string: "
-                        + realm + " for class: " + mName);
+                        + realm);
         }
     }
 }

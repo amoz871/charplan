@@ -1,7 +1,3 @@
-/*
- * Copyright (C) 1998-2015 UEFA.
- * All rights, including trade secret rights, reserved.
- */
 package com.daoc.charplan.ui.start;
 
 import android.content.Context;
