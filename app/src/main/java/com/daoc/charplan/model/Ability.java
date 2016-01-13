@@ -9,9 +9,15 @@ import java.io.Serializable;
  */
 public class Ability extends AbstractListItem implements Serializable {
 
-    protected static int mId;
-    protected static int mLevel;
-    protected static String mName;
+    protected int mId;
+    protected int mLevel;
+    protected String mName;
+    protected String mEffect;
+
+    /**
+     * Protected constructor, only create from database.
+     */
+    protected Ability() {}
 
     public int getId() {
         return mId;
@@ -24,5 +30,9 @@ public class Ability extends AbstractListItem implements Serializable {
     @Override
     public String getTitle() {
         return mName;
+    }
+
+    public String getEffect() {
+        return mEffect;
     }
 }

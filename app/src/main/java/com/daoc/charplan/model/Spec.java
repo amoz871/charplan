@@ -5,7 +5,7 @@ import com.daoc.charplan.ui.common.AbstractListItem;
 import java.io.Serializable;
 
 /**
- * A model containing all the information specific for a Spec.
+ * A model containing all the information specific for a specialization.
  */
 public class Spec extends AbstractListItem implements Serializable {
 

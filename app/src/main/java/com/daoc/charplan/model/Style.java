@@ -1,7 +1,5 @@
 package com.daoc.charplan.model;
 
-import com.daoc.charplan.ui.common.AbstractListItem;
-
 import java.io.Serializable;
 
 /**
@@ -9,13 +7,46 @@ import java.io.Serializable;
  */
 public class Style extends Ability implements Serializable {
 
-    @Override
-    public int getId() {
-        return 0;
+    private String mPreReq;
+    private Style mPreReqStyle;
+    private String mAttack;
+    private String mDefense;
+    private String mCost;
+    private String mDamage;
+    private Spell mEffectSpell;
+
+    /**
+     * Private constructor, should only create from database.
+     */
+    private Style() {
+        super();
     }
 
-    @Override
-    public String getTitle() {
-        return "";
+    public String getPreReq() {
+        return mPreReq;
+    }
+
+    public Style getPreReqStyle() {
+        return mPreReqStyle;
+    }
+
+    public String getAttack() {
+        return mAttack;
+    }
+
+    public String getDefense() {
+        return mDefense;
+    }
+
+    public String getCost() {
+        return mCost;
+    }
+
+    public String getDamage() {
+        return mDamage;
+    }
+
+    public Spell getEffectSpell() {
+        return mEffectSpell;
     }
 }
