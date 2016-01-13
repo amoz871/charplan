@@ -1,8 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
- Copyright (C) 1998-2015 UEFA.
- All rights, including trade secret rights, reserved.
--->
 <FindBugsFilter>
     <Match>
         <Class name="~.*\.R\$.*"/>
@@ -10,22 +6,4 @@
     </Match>
 
     <Bug code="UwF" /> <!-- 'UwF' is the code for bugs related code with unwritten field -->
-
-    <!-- Error Priority: Normal -->
-    <Match>
-        <Class name="com.uefa.venue.ui.appointments.AppointmentsAdapter$MatchesViewHolder"/>
-        <Bug pattern="SF_SWITCH_FALLTHROUGH"/>
-    </Match>
-    <Match>
-        <Class name="com.uefa.venue.ui.appointments.AppointmentsAdapter$MatchesViewHolder"/>
-        <Bug pattern="NP_LOAD_OF_KNOWN_NULL_VALUE"/>
-    </Match>
-    <Match>
-        <Class name="com.uefa.venue.ui.appointments.AppointmentsAdapter$SiteVisitViewHolder"/>
-        <Bug pattern="SF_SWITCH_FALLTHROUGH"/>
-    </Match>
-    <Match>
-        <Class name="com.uefa.venue.ui.appointments.AppointmentsAdapter$SiteVisitViewHolder"/>
-        <Bug pattern="NP_LOAD_OF_KNOWN_NULL_VALUE"/>
-    </Match>
 </FindBugsFilter>

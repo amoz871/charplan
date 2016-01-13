@@ -2,13 +2,16 @@ package com.daoc.charplan.model;
 
 import android.database.Cursor;
 
+import com.daoc.charplan.Constants;
 import com.daoc.charplan.provider.DbContract;
 import com.daoc.charplan.ui.common.AbstractListItem;
+
+import org.jetbrains.*;
 
 import java.io.Serializable;
 
 /**
- * A model containing all the information specific for a Class.
+ * A model containing all the information specific for a PlayerClass.
  */
 public class PlayerClass extends AbstractListItem implements Serializable {
 
@@ -18,13 +21,22 @@ public class PlayerClass extends AbstractListItem implements Serializable {
     private static String mRealm;
     private static int mRealmId;
     private static String mSubclass;
+    private static double mMultiplier;
+    private static int[] mSpecIds;
+    private static int[] mRaIds;
+    private static int[] mMlIds;
+    private static int[] mClIds;
 
-    // Non-static fields holding current status.
+    // Fields assigned on selection
+    private Spec[] mSpecs;
+
+    // Dynamic fields to be used after selection
     private double mLevel;
     private int mRealmRank;
     private int mMasterLevel;
     private int mChampionLevel;
 
+    // Items from creation
     @Override
     public int getId() {
         return mId;
@@ -86,7 +98,7 @@ public class PlayerClass extends AbstractListItem implements Serializable {
     /**
      * Constructed from database.
      */
-    public static PlayerClass loadFrom(Cursor cursor) {
+    public static PlayerClass loadFromCursor(Cursor cursor) {
         if (cursor == null || cursor.isClosed()) {
             throw new UnsupportedOperationException("Cursor is null or closed");
         }
@@ -124,17 +136,17 @@ public class PlayerClass extends AbstractListItem implements Serializable {
      * Gets the ID of the realm from the string retrieved from database
      *
      * @param realm The name of the realm
-     * @return Realm ID, see #Constrants
+     * @return Realm ID, see {@link Constants}.
      */
     private static int getIdForRealm(String realm) {
         switch (realm) {
             // TODO: add FR and DE strings
             case "Albion":
-                return 1;
+                return Constants.ALBION_ID;
             case "Hibernia":
-                return 2;
+                return Constants.HIBERNIA_ID;
             case "Midgard":
-                return 3;
+                return Constants.MIDGARD_ID;
             default:
                 throw new IllegalArgumentException("Trying to get realm ID for unknown string: "
                         + realm + " for class: " + mName);

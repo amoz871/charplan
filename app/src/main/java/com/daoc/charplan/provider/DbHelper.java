@@ -74,7 +74,7 @@ public class DbHelper extends SQLiteAssetHelper {
         final List<PlayerClass> classes = new ArrayList<>();
         if (cursor != null) {
             while (cursor.moveToNext()) {
-                final PlayerClass playerClass = PlayerClass.loadFrom(cursor);
+                final PlayerClass playerClass = PlayerClass.loadFromCursor(cursor);
                 classes.add(playerClass);
             }
             cursor.close();
