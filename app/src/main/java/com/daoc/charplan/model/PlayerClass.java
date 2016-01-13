@@ -12,16 +12,20 @@ import java.io.Serializable;
  */
 public class PlayerClass extends AbstractListItem implements Serializable {
 
-    private int mId;
-    private String mName;
-    private String mRealm;
-    private int mRealmId;
-    private String mSubclass;
+    // Static fields assigned at creation.
+    private static int mId;
+    private static String mName;
+    private static String mRealm;
+    private static int mRealmId;
+    private static String mSubclass;
+
+    // Non-static fields holding current status.
     private double mLevel;
     private int mRealmRank;
     private int mMasterLevel;
     private int mChampionLevel;
 
+    @Override
     public int getId() {
         return mId;
     }
@@ -31,8 +35,8 @@ public class PlayerClass extends AbstractListItem implements Serializable {
         return mName;
     }
 
-    public String getSubclass() {
-        return mSubclass;
+    public String getName() {
+        return getTitle();
     }
 
     public String getRealm() {
@@ -41,6 +45,10 @@ public class PlayerClass extends AbstractListItem implements Serializable {
 
     public int getRealmId() {
         return mRealmId;
+    }
+
+    public String getSubclass() {
+        return mSubclass;
     }
 
     public void setLevel(double level) {
@@ -78,20 +86,20 @@ public class PlayerClass extends AbstractListItem implements Serializable {
     /**
      * Constructed from database.
      */
-    public PlayerClass loadFrom(Cursor cursor) {
+    public static PlayerClass loadFrom(Cursor cursor) {
         if (cursor == null || cursor.isClosed()) {
             throw new UnsupportedOperationException("Cursor is null or closed");
         }
         final PlayerClass playerClass = new PlayerClass();
-        playerClass.mId = cursor.getInt(cursor.getColumnIndex(DbContract.TableClasses._ID));
+        mId = cursor.getInt(cursor.getColumnIndex(DbContract.TableClasses._ID));
 
         // Name, realm and subclass will depend on language (EN/FR/DE)
-        playerClass.mName = cursor.getString(cursor.getColumnIndex(DbContract.TableClasses.NAME));
-        playerClass.mRealm = cursor.getString(
+        mName = cursor.getString(cursor.getColumnIndex(DbContract.TableClasses.NAME));
+        mRealm = cursor.getString(
                 cursor.getColumnIndex(DbContract.TableClasses.REALM));
-        playerClass.mRealmId = getIdForRealm(mRealm);
+        mRealmId = getIdForRealm(mRealm);
         // Only used for classic
-        playerClass.mSubclass = cursor.getString(
+        mSubclass = cursor.getString(
                 cursor.getColumnIndex(DbContract.TableClasses.SUBCLASS));
 
         // RR1L0 is min
@@ -118,7 +126,7 @@ public class PlayerClass extends AbstractListItem implements Serializable {
      * @param realm The name of the realm
      * @return Realm ID, see #Constrants
      */
-    private int getIdForRealm(String realm) {
+    private static int getIdForRealm(String realm) {
         switch (realm) {
             // TODO: add FR and DE strings
             case "Albion":
