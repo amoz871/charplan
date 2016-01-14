@@ -119,7 +119,7 @@ public class CharacterFragment extends BaseFragment {
     private void initializeViewPager(View view) {
         mViewPager = (ViewPager) view.findViewById(R.id.char_pager);
         mViewPager.setOffscreenPageLimit(mFragments.size());
-        mViewPager.addOnPageChangeListener(new SetLevelOnPageChange());
+        mViewPager.addOnPageChangeListener(new SetLevelOnPageChangeListener());
         mViewPager.setAdapter(new CharacterPageAdapter(getChildFragmentManager()));
         ((SlidingTabLayout) view.findViewById(R.id.char_tab_layout)).setViewPager(mViewPager);
     }
@@ -168,7 +168,7 @@ public class CharacterFragment extends BaseFragment {
     /**
      * Listener to update common values between fragments.
      */
-    private class SetLevelOnPageChange implements ViewPager.OnPageChangeListener {
+    private class SetLevelOnPageChangeListener implements ViewPager.OnPageChangeListener {
 
         /**
          * {@inheritDoc}
