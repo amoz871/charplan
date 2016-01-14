@@ -3,6 +3,7 @@ package com.daoc.charplan.ui.common;
 import android.content.Context;
 import android.database.DataSetObserver;
 import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
@@ -144,7 +145,8 @@ public class SlidingTabLayout extends HorizontalScrollView {
                     mTabStrip.addView(tabView);
                 }
                 if (index == mViewPager.getCurrentItem()) {
-                    titleView.setTextColor(getResources().getColor(R.color.colorAccent));
+                    titleView.setTextColor(ContextCompat.getColor(
+                            getContext(), R.color.colorAccent));
                     tabView.setSelected(true);
                 }
             }
@@ -240,7 +242,8 @@ public class SlidingTabLayout extends HorizontalScrollView {
                             .setTextColor(Color.WHITE);
                 } else {
                     ((TextView) mTabStrip.getChildAt(i).findViewById(android.R.id.text1))
-                            .setTextColor(getResources().getColor(R.color.colorAccent));
+                            .setTextColor(ContextCompat.getColor(
+                                    getContext(), R.color.colorAccent));
                 }
             }
         }

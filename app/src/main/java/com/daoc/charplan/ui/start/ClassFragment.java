@@ -124,7 +124,6 @@ public class ClassFragment extends BaseFragment implements ClassInterface {
          */
         @Override
         protected Void doInBackground(Void... params) {
-            Log.d("Getting classes for realm:" + mRealmId);
             mClasses = DbHelper.getInstance(getContext()).getClasses(mRealmId);
             return null;
         }
@@ -135,7 +134,8 @@ public class ClassFragment extends BaseFragment implements ClassInterface {
         @Override
         protected void onPostExecute(Void v) {
             mClassAdapter.addContent(mClasses);
-            Log.d("Found " + mClassAdapter.getItemCount() + " classes");
+            Log.d("Found " + mClassAdapter.getItemCount() +
+                    " classes for realm " + getTitle(getContext()));
         }
     }
 }
