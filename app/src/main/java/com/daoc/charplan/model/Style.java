@@ -13,6 +13,7 @@ public class Style extends Ability implements Serializable {
     private String mDefense;
     private String mCost;
     private String mDamage;
+    private String mGrowthRate;
     private Spell mEffectSpell;
 
     /**
@@ -44,6 +45,10 @@ public class Style extends Ability implements Serializable {
 
     public String getDamage() {
         return mDamage;
+    }
+
+    public String getGr() {
+        return mGrowthRate;
     }
 
     public Spell getEffectSpell() {
