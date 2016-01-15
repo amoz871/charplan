@@ -49,14 +49,15 @@ public class DbContract {
         public static final String _ID = "_id";
         public static final String LEVEL = "level";
         public static final String NAME = "name";
-        public static final String EFFECT = "effect";
         public static final String TARGET = "target";
         public static final String CAST = "cast";
         public static final String DURATION = "duration";
         public static final String REUSE = "reuse";
         public static final String RANGE = "range";
         public static final String RADIUS = "radius";
+        public static final String EFFECT = "effect";
         public static final String COST = "cost";
+        public static final String DMG_TYPE = "dmgtype";
     }
 
     public static abstract class TableStyles implements BaseColumns {
