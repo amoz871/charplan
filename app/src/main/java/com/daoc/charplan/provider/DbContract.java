@@ -58,6 +58,7 @@ public class DbContract {
         public static final String EFFECT = "effect";
         public static final String COST = "cost";
         public static final String DMG_TYPE = "dmgtype";
+        public static final String CLASS_ID = "classId";
     }
 
     public static abstract class TableStyles implements BaseColumns {
@@ -67,13 +68,14 @@ public class DbContract {
         public static final String LEVEL = "level";
         public static final String NAME = "name";
         public static final String PREREQUISITE = "prerequisite";
-        public static final String PREREQ_STYLE = "prereqstyle";
         public static final String ATTACK = "attack";
         public static final String DEFENSE = "defense";
         public static final String COST = "cost";
         public static final String DAMAGE = "damage";
         public static final String EFFECT = "effect";
-        public static final String EFFECT_SPELL = "effectSpell";
         public static final String GROWTH_RATE = "growthRate";
+        public static final String PREREQ_STYLE = "prereqstyle";
+        public static final String EFFECT_SPELL = "effectSpell";
+        public static final String CLASS_ID = "classId";
     }
 }
