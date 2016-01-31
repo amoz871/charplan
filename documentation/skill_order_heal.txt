@@ -1,0 +1,19 @@
+Minor Heal
+Heal
+Minor Grp Heal
+Rezz
+Cures
+
+Major Heal
+Greater Heal
+Group Heal
+Insta
+Grp Insta
+Spreadheal
+Rezz
+Cures
+
+Major Heal
+<specs>
+Rezz
+Cures
