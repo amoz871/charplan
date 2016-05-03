@@ -5,7 +5,7 @@
 /.idea/libraries
 /.idea/gradle.xml
 /.idea/misc.xml
-/.idea/dictionaries
+/.idea/dictionaries/*
 .DS_Store
 /build
 /captures
