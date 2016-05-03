@@ -10,13 +10,10 @@ import java.util.List;
 /**
  * A model containing all the information specific for a specialization.
  */
-public class Spec extends AbstractListItem implements Serializable {
+public class Skill extends AbstractListItem implements Serializable {
 
     private int mId;
     private String mTitle;
-    private String mSpecTitle;
-    private List<Skill> mBaseSkills;
-    private List<Skill> mSpecSkills;
 
     public int getId() {
         return mId;
@@ -27,27 +24,15 @@ public class Spec extends AbstractListItem implements Serializable {
         return mTitle;
     }
 
-    public String getSpecTitle() {
-        return mSpecTitle;
-    }
-
-    public List<Skill> getBaseSkills() {
-        return mBaseSkills;
-    }
-
-    public List<Skill> getSpecSkills() {
-        return mSpecSkills;
-    }
-
     /**
      * Constructed from database.
      */
-    public static Spec loadFromCursor(Cursor cursor) {
+    public static Skill loadFromCursor(Cursor cursor) {
         if (cursor == null || cursor.isClosed()) {
             throw new UnsupportedOperationException("Cursor is null or closed");
         }
-        final Spec spec = new Spec();
+        final Skill skill = new Skill();
         //FIXME
-        return spec;
+        return skill;
     }
 }

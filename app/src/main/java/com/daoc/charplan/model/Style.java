@@ -1,5 +1,7 @@
 package com.daoc.charplan.model;
 
+import android.database.Cursor;
+
 import java.io.Serializable;
 
 /**
@@ -53,5 +55,17 @@ public class Style extends Ability implements Serializable {
 
     public Spell getEffectSpell() {
         return mEffectSpell;
+    }
+
+    /**
+     * Constructed from database.
+     */
+    public static Style loadFromCursor(Cursor cursor) {
+        if (cursor == null || cursor.isClosed()) {
+            throw new UnsupportedOperationException("Cursor is null or closed");
+        }
+        final Style style = new Style();
+        //FIXME
+        return style;
     }
 }

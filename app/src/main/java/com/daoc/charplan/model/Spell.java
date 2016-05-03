@@ -1,5 +1,7 @@
 package com.daoc.charplan.model;
 
+import android.database.Cursor;
+
 import java.io.Serializable;
 
 /**
@@ -49,5 +51,17 @@ public class Spell extends Ability implements Serializable {
 
     public String getCost() {
         return mCost;
+    }
+
+    /**
+     * Constructed from database.
+     */
+    public static Spell loadFromCursor(Cursor cursor) {
+        if (cursor == null || cursor.isClosed()) {
+            throw new UnsupportedOperationException("Cursor is null or closed");
+        }
+        final Spell spell = new Spell();
+        //FIXME
+        return spell;
     }
 }

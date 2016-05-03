@@ -33,6 +33,7 @@ dependencies {
     //compile 'com.android.support:support-annotations:23.1.1'
     compile 'com.google.code.findbugs:annotations:3.0.0'
     compile 'com.readystatesoftware.sqliteasset:sqliteassethelper:2.0.1'
+    compile 'org.jetbrains:annotations-java5:15.0'
 }
 
 task findbugs(type: FindBugs) {

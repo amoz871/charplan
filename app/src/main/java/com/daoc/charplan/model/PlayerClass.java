@@ -5,7 +5,6 @@ import android.database.Cursor;
 import com.daoc.charplan.Constants;
 import com.daoc.charplan.provider.DbContract;
 import com.daoc.charplan.ui.common.AbstractListItem;
-import com.daoc.charplan.util.Log;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -130,7 +129,7 @@ public class PlayerClass extends AbstractListItem implements Serializable {
         playerClass.mId = cursor.getInt(cursor.getColumnIndex(DbContract.TableClasses._ID));
 
         // Name, realm and subclass will depend on language (EN/FR/DE)
-        playerClass.mName = cursor.getString(cursor.getColumnIndex(DbContract.TableClasses.NAME));
+        playerClass.mName = cursor.getString(cursor.getColumnIndex(DbContract.TableClasses.TITLE));
         playerClass.mRealm = cursor.getString(
                 cursor.getColumnIndex(DbContract.TableClasses.REALM));
         playerClass.mRealmId = getIdForRealm(playerClass.mRealm);
