@@ -11,7 +11,7 @@ public class Ability extends AbstractListItem implements Serializable {
 
     protected int mId;
     protected int mLevel;
-    protected String mName;
+    protected String mTitle;
     protected String mEffect;
 
     /**
@@ -29,7 +29,7 @@ public class Ability extends AbstractListItem implements Serializable {
 
     @Override
     public String getTitle() {
-        return mName;
+        return mTitle;
     }
 
     public String getEffect() {

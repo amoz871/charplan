@@ -2,6 +2,10 @@ package com.daoc.charplan.model;
 
 import android.database.Cursor;
 
+import com.daoc.charplan.provider.DbContract;
+
+import org.jetbrains.annotations.Contract;
+
 import java.io.Serializable;
 
 /**
@@ -60,12 +64,16 @@ public class Style extends Ability implements Serializable {
     /**
      * Constructed from database.
      */
+    @Contract("null -> fail")
     public static Style loadFromCursor(Cursor cursor) {
         if (cursor == null || cursor.isClosed()) {
             throw new UnsupportedOperationException("Cursor is null or closed");
         }
         final Style style = new Style();
-        //FIXME
+        style.mId = cursor.getInt(cursor.getColumnIndex(DbContract.TableStyles._ID));
+        style.mTitle = cursor.getString(cursor.getColumnIndex(DbContract.TableStyles.TITLE));
+        // TODO: add the rest
+
         return style;
     }
 }

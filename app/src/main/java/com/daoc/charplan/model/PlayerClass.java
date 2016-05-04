@@ -6,6 +6,8 @@ import com.daoc.charplan.Constants;
 import com.daoc.charplan.provider.DbContract;
 import com.daoc.charplan.ui.common.AbstractListItem;
 
+import org.jetbrains.annotations.Contract;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -121,6 +123,7 @@ public class PlayerClass extends AbstractListItem implements Serializable {
     /**
      * Constructed from database.
      */
+    @Contract("null -> fail")
     public static PlayerClass loadFromCursor(Cursor cursor) {
         if (cursor == null || cursor.isClosed()) {
             throw new UnsupportedOperationException("Cursor is null or closed");

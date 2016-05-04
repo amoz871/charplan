@@ -2,6 +2,10 @@ package com.daoc.charplan.model;
 
 import android.database.Cursor;
 
+import com.daoc.charplan.provider.DbContract;
+
+import org.jetbrains.annotations.Contract;
+
 import java.io.Serializable;
 
 /**
@@ -56,12 +60,16 @@ public class Spell extends Ability implements Serializable {
     /**
      * Constructed from database.
      */
+    @Contract("null -> fail")
     public static Spell loadFromCursor(Cursor cursor) {
         if (cursor == null || cursor.isClosed()) {
             throw new UnsupportedOperationException("Cursor is null or closed");
         }
         final Spell spell = new Spell();
-        //FIXME
+        spell.mId = cursor.getInt(cursor.getColumnIndex(DbContract.TableSpells._ID));
+        spell.mTitle = cursor.getString(cursor.getColumnIndex(DbContract.TableSpells.TITLE));
+        // TODO: add the rest
+
         return spell;
     }
 }

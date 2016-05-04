@@ -2,7 +2,10 @@ package com.daoc.charplan.model;
 
 import android.database.Cursor;
 
+import com.daoc.charplan.provider.DbContract;
 import com.daoc.charplan.ui.common.AbstractListItem;
+
+import org.jetbrains.annotations.Contract;
 
 import java.io.Serializable;
 import java.util.List;
@@ -42,12 +45,16 @@ public class Spec extends AbstractListItem implements Serializable {
     /**
      * Constructed from database.
      */
+    @Contract("null -> fail")
     public static Spec loadFromCursor(Cursor cursor) {
         if (cursor == null || cursor.isClosed()) {
             throw new UnsupportedOperationException("Cursor is null or closed");
         }
         final Spec spec = new Spec();
-        //FIXME
+        spec.mId = cursor.getInt(cursor.getColumnIndex(DbContract.TableSpecs._ID));
+        spec.mTitle = cursor.getString(cursor.getColumnIndex(DbContract.TableSpecs.TITLE));
+        // TODO: add the rest
+
         return spec;
     }
 }

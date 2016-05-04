@@ -50,7 +50,7 @@ public class Ra extends Spell implements Serializable {
      */
     public void setLevel(int level) {
         if (level < 0 || level > mMaxLevel) {
-            throw new IllegalArgumentException("Trying to set level of " + mName + " to " + level
+            throw new IllegalArgumentException("Trying to set level of " + mTitle + " to " + level
                     + " but max level is " + mMaxLevel);
         } else {
             mLevel = level;

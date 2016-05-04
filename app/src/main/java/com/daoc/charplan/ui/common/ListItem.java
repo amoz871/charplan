@@ -69,7 +69,7 @@ public interface ListItem {
         SPEC,
 
         /**
-         * Item is a {@link com.daoc.charplan.model.RA}.
+         * Item is a {@link com.daoc.charplan.model.Ra}.
          */
         RA,
 

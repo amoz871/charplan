@@ -86,10 +86,10 @@ public class CharacterActivity extends BaseActivity {
                 openSettings();
                 break;
             case R.id.menu_lvl50:
-                makeFifty();
+                setMaxLevel();
                 break;
             case R.id.menu_lvl1:
-                makeOne();
+                setMinLevel();
                 break;
             default:
         }
@@ -99,7 +99,7 @@ public class CharacterActivity extends BaseActivity {
     /**
      * Set character level to 50.
      */
-    private void makeFifty() {
+    private void setMaxLevel() {
         CharacterFragment fragment = (CharacterFragment) getFragmentManager().
                 findFragmentByTag(CharacterFragment.class.getName());
         mPlayerClass.setLevel(50);
@@ -109,7 +109,7 @@ public class CharacterActivity extends BaseActivity {
     /**
      * Set character level to 1.
      */
-    private void makeOne() {
+    private void setMinLevel() {
         CharacterFragment fragment = (CharacterFragment) getFragmentManager().
                 findFragmentByTag(CharacterFragment.class.getName());
         mPlayerClass.setLevel(1);
