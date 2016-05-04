@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?><!-- Layout for StatFragment -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
+
+    <!-- Linear Layout for the Level-related views -->
+    <LinearLayout
+        android:id="@+id/skills_level_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_small"
+        android:layout_marginEnd="@dimen/spacing_small"
+        android:orientation="horizontal">
+
+        <!-- TextView displaying level -->
+        <TextView
+            android:id="@+id/skills_level_text_view"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="2.5"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginStart="@dimen/spacing_small"
+            android:textSize="@dimen/text_large" />
+
+        <!-- Button to decrease level -->
+        <Button
+            android:id="@+id/skills_decrease_level"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/skills_minus"
+            android:textSize="@dimen/text_large" />
+
+        <!-- Button to increase level -->
+        <Button
+            android:id="@+id/skills_increase_level"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/skills_plus"
+            android:textSize="@dimen/text_large" />
+
+    </LinearLayout>
+
+    <!-- LinearLayout for the points related views -->
+    <LinearLayout
+        android:id="@+id/skills_points_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:layout_marginStart="@dimen/spacing_small"
+        android:layout_marginEnd="@dimen/spacing_small"
+        android:layout_below="@id/skills_level_layout"
+        android:orientation="horizontal">
+
+        <!-- TextView displaying total points -->
+        <TextView
+            android:id="@+id/skills_total_points_text"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="@dimen/spacing_small"
+            android:textSize="@dimen/text_medium" />
+
+        <!-- TextView displaying remaining points -->
+        <TextView
+            android:id="@+id/skills_remaining_points_text"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="@dimen/spacing_small"
+            android:textSize="@dimen/text_medium" />
+
+        <!-- TextView displaying bonus points -->
+        <TextView
+            android:id="@+id/skills_bonus_points_text"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="@dimen/spacing_small"
+            android:textSize="@dimen/text_medium" />
+
+    </LinearLayout>
+
+    <!-- RecyclerView to show list of abilities -->
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/skills_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/skills_points_layout">
+
+    </android.support.v7.widget.RecyclerView>
+</RelativeLayout>

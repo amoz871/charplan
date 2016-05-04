@@ -47,7 +47,8 @@ public class DbHelper extends SQLiteAssetHelper {
         String[] projection = {DbContract.TableClasses._ID,
                 DbContract.TableClasses.TITLE,
                 DbContract.TableClasses.REALM,
-                DbContract.TableClasses.SUBCLASS};
+                DbContract.TableClasses.SUBCLASS,
+                DbContract.TableClasses.MULTIPLIER};
         String selection;
         String[] selectionArgs;
 
@@ -89,8 +90,8 @@ public class DbHelper extends SQLiteAssetHelper {
         String table = DbContract.TableSpecs.TABLE;
         String[] projection = {DbContract.TableSpecs._ID,
                 DbContract.TableSpecs.TITLE};
-        String selection = DbContract.TableSpecs.CLASS + " = ?";
-        String selectionArgs[] = new String[]{Integer.toString(classId)};
+        String selection = DbContract.TableSpecs.CLASS + " LIKE ?";
+        String selectionArgs[] = new String[]{"%,"+Integer.toString(classId)+",%"};
 
         final Cursor cursor = query(getReadableDatabase(),
                 table, projection, selection, selectionArgs);
@@ -135,9 +136,10 @@ public class DbHelper extends SQLiteAssetHelper {
      * Queries a database for all {@link Spell}s for a {@link Skill}.
      *
      * @param skillId The {@link Skill} to get {@link Spell}s for.
+     * @param classId The {@link PlayerClass} to get {@link Spell}s for.
      * @return The result of the query.
      */
-    public List<Spell> getSpells(int skillId) {
+    public List<Spell> getSpells(int skillId, int classId) {
         String table = DbContract.TableSpells.TABLE;
         String[] projection = {DbContract.TableSpells._ID,
                 DbContract.TableSpells.TITLE};
@@ -160,9 +162,10 @@ public class DbHelper extends SQLiteAssetHelper {
      * Queries a database for all {@link Style}s for a {@link Skill}.
      *
      * @param skillId The {@link Skill} to get {@link Style}s for.
+     * @param classId The {@link PlayerClass} to get {@link Style}s for.
      * @return The result of the query.
      */
-    public List<Style> getStyles(int skillId) {
+    public List<Style> getStyles(int skillId, int classId) {
         String table = DbContract.TableStyles.TABLE;
         String[] projection = {DbContract.TableStyles._ID,
                 DbContract.TableStyles.TITLE};

@@ -17,7 +17,7 @@ public class Spec extends AbstractListItem implements Serializable {
 
     private int mId;
     private String mTitle;
-    private String mSpecTitle;
+    private String mSecTitle;
     private List<Skill> mBaseSkills;
     private List<Skill> mSpecSkills;
 
@@ -30,8 +30,8 @@ public class Spec extends AbstractListItem implements Serializable {
         return mTitle;
     }
 
-    public String getSpecTitle() {
-        return mSpecTitle;
+    public String getSecTitle() {
+        return mSecTitle;
     }
 
     public List<Skill> getBaseSkills() {

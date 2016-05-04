@@ -10,4 +10,7 @@
     <string name="hibernia">Hibernia</string>
     <string name="midgard">Midgard</string>
     <string name="unknown">Unknown</string>
+    <!-- SkillsFragment strings -->
+    <string name="skills_minus">-</string>
+    <string name="skills_plus">+</string>
 </resources>

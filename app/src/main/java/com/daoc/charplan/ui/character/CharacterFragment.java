@@ -14,6 +14,7 @@ import com.daoc.charplan.R;
 import com.daoc.charplan.model.PlayerClass;
 import com.daoc.charplan.ui.common.BaseFragment;
 import com.daoc.charplan.ui.common.SlidingTabLayout;
+import com.daoc.charplan.util.Log;
 
 import java.util.ArrayList;
 
@@ -49,9 +50,10 @@ public class CharacterFragment extends BaseFragment {
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
+        Log.d("Created CharacterFragment");
         setRetainInstance(true);
         final View view = inflater.inflate(R.layout.character_fragment, container, false);
-        mPlayerClass = (PlayerClass) getArguments().getSerializable(CLASS_BUNDLE_IDENTIFIER);
+        //mPlayerClass = (PlayerClass) getArguments().getSerializable(CLASS_BUNDLE_IDENTIFIER);
         initializeFragments();
         initializeViewPager(view);
         if (savedInstanceState != null) {
@@ -97,17 +99,18 @@ public class CharacterFragment extends BaseFragment {
     private void initializeFragments() {
         mFragments = new ArrayList<>();
         final Bundle args = new Bundle();
-        args.putSerializable(CLASS_BUNDLE_IDENTIFIER, mPlayerClass);
+        args.putSerializable(CLASS_BUNDLE_IDENTIFIER, mActivity.getPlayerClass());
 
         /* TODO
         final StatsFragment statsFragment = new StatsFragment();
         statsFragment.setArguments(args);
-        mFragments.add(statsFragment);
+        mFragments.add(statsFragment);*/
 
         final SkillsFragment skillsFragment = new SkillsFragment();
         skillsFragment.setArguments(args);
         mFragments.add(skillsFragment);
 
+        /* TODO
         final RasFragment rasFragment = new RasFragment();
         rasFragment.setArguments(args);
         mFragments.add(rasFragment);*/

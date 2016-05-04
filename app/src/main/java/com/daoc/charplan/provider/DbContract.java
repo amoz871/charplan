@@ -14,7 +14,7 @@ public class DbContract {
         public static final String TITLE = "title";
         public static final String REALM = "realm";
         public static final String SUBCLASS = "subclass";
-        // TODO: add the rest
+        public static final String MULTIPLIER = "multiplier";
     }
 
     public static abstract class TableAbilities implements BaseColumns {
@@ -29,7 +29,7 @@ public class DbContract {
 
     public static abstract class TableSpecs implements BaseColumns {
         public static final String TABLE = "specs";
-        public static final String CLASS = "class";
+        public static final String CLASS = "classes";
 
         public static final String _ID = "_id";
         public static final String TITLE = "title";
