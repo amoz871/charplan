@@ -3,6 +3,7 @@ package com.daoc.charplan.model;
 import android.database.Cursor;
 
 import com.daoc.charplan.provider.DbContract;
+import com.daoc.charplan.provider.DbHelper;
 import com.daoc.charplan.ui.common.AbstractListItem;
 
 import org.jetbrains.annotations.Contract;
@@ -34,8 +35,16 @@ public class Spec extends AbstractListItem implements Serializable {
         return mSecTitle;
     }
 
+    public void setBaseSkills(List<Skill> baseSkills) {
+        mBaseSkills = baseSkills;
+    }
+
     public List<Skill> getBaseSkills() {
         return mBaseSkills;
+    }
+
+    public void setSpecSkills(List<Skill> specSkills) {
+        mSpecSkills = specSkills;
     }
 
     public List<Skill> getSpecSkills() {

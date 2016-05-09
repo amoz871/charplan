@@ -15,6 +15,7 @@ import com.daoc.charplan.model.PlayerClass;
 import com.daoc.charplan.ui.common.AbstractListItem;
 import com.daoc.charplan.ui.common.ListItem;
 import com.daoc.charplan.ui.common.Separator;
+import com.daoc.charplan.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,6 +72,8 @@ public class ClassAdapter extends RecyclerView.Adapter<ClassAdapter.ItemViewHold
                 viewHolder = new SeparatorViewHolder(parent, R.layout.separator_view_holder);
                 break;
             default:
+                Log.e("Trying to create view holder with type: "
+                        + ListItem.ListType.valueOf(viewType));
         }
         return viewHolder;
     }

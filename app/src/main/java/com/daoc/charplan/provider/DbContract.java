@@ -38,10 +38,11 @@ public class DbContract {
 
     public static abstract class TableSkills implements BaseColumns {
         public static final String TABLE = "skills";
-        public static final String SPEC = "spec";
+        public static final String SPECS = "specs";
 
         public static final String _ID = "_id";
         public static final String TITLE = "title";
+        public static final String BASE = "base";
         public static final String DESCRIPTION = "description";
     }
 

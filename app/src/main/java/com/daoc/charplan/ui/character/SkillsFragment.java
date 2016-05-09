@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.daoc.charplan.R;
+import com.daoc.charplan.model.Skill;
 import com.daoc.charplan.model.Spec;
 import com.daoc.charplan.provider.DbHelper;
 import com.daoc.charplan.ui.common.BaseFragment;
@@ -70,9 +71,19 @@ public class SkillsFragment extends BaseFragment {
             mSpecs = DbHelper.getInstance(
                     getContext()).getSpecs(mActivity.getPlayerClass().getId());
             for (Spec spec : mSpecs) {
-                // Get Skills for the Spec
-                //DbHelper.getInstance(getContext()).getSkills(spec.getId());
-
+                // Get base skills for the Spec
+                spec.setBaseSkills(
+                        DbHelper.getInstance(getContext()).getSkills(spec.getId(), true));
+                // Fill all base skills with abilities
+                for (Skill baseSkill : spec.getBaseSkills()) {
+                    // TODO
+                }
+                spec.setSpecSkills(
+                        DbHelper.getInstance(getContext()).getSkills(spec.getId(), false));
+                // Fill all spec skills with abilities
+                for (Skill baseSkill : spec.getBaseSkills()) {
+                    // TODO
+                }
             }
             return null;
         }
@@ -87,6 +98,16 @@ public class SkillsFragment extends BaseFragment {
                     " specs for class " + mActivity.getPlayerClass().getTitle());
             for (Spec spec : mSpecs) {
                 Log.d(spec.getId() + ": " + spec.getTitle());
+                Log.d("Found " + spec.getBaseSkills().size() +
+                        " base skills for spec: " + spec.getTitle());
+                for (Skill skill : spec.getBaseSkills()) {
+                    Log.d(skill.getId() + ": " + skill.getTitle());
+                }
+                Log.d("Found " + spec.getSpecSkills().size() +
+                        " base skills for spec: " + spec.getTitle());
+                for (Skill skill : spec.getSpecSkills()) {
+                    Log.d(skill.getId() + ": " + skill.getTitle());
+                }
             }
         }
     }

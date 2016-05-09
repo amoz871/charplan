@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/spec_item_view"
+    style="@style/ViewHolderCard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/spacing_medium"
+    app:cardCornerRadius="@dimen/card_view_corner_radius"
+    app:cardBackgroundColor="@android:color/darker_gray">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center_vertical"
+        android:layout_margin="@dimen/spacing_small"
+        android:background="?android:attr/selectableItemBackground"
+        android:orientation="horizontal">
+
+        <!-- TextView spec name and extra -->
+        <TextView
+            android:id="@+id/spec_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true"
+            android:layout_gravity="center_vertical|start"
+            android:gravity="center_vertical|start"
+            android:textColor="@color/colorPrimary"
+            tools:ignore="RelativeOverlap" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal" >
+
+            <!-- TextView to show spec level -->
+            <TextView
+                android:id="@+id/spec_level_text"
+                android:layout_width="0dip"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@color/colorPrimary" />
+
+            <!-- Button to decrease spec level -->
+            <Button
+                android:id="@+id/spec_decrease_button"
+                android:layout_width="0dip"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/skills_minus" />
+
+            <!-- Button to increase spec level -->
+            <Button
+                android:id="@+id/spec_increase_button"
+                android:layout_width="0dip"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/skills_plus" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <!-- Delimiter -->
+    <View style="@style/ListItemDelimiter" />
+</android.support.v7.widget.CardView>

@@ -12,6 +12,7 @@ import com.daoc.charplan.model.Skill;
 import com.daoc.charplan.model.Spec;
 import com.daoc.charplan.model.Spell;
 import com.daoc.charplan.model.Style;
+import com.daoc.charplan.util.Log;
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
 import java.util.ArrayList;
@@ -112,12 +113,14 @@ public class DbHelper extends SQLiteAssetHelper {
      * @param specId The {@link Spec} to get {@link Skill}s for.
      * @return The result of the query.
      */
-    public List<Skill> getSkills(int specId) {
+    public List<Skill> getSkills(int specId, boolean isBase) {
         String table = DbContract.TableSkills.TABLE;
         String[] projection = {DbContract.TableSkills._ID,
                 DbContract.TableSkills.TITLE};
-        String selection = DbContract.TableSkills.SPEC;
-        String selectionArgs[] = new String[]{Integer.toString(specId)};
+        String selection = DbContract.TableSkills.SPECS + " LIKE ? AND " +
+                DbContract.TableSkills.BASE + " = ?";
+        String selectionArgs[] = new String[]{"%,"+Integer.toString(specId)+",%",
+                isBase ? "1": "0"};
 
         final Cursor cursor = query(getReadableDatabase(),
                 table, projection, selection, selectionArgs);
