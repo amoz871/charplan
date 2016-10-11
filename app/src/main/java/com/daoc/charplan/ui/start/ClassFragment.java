@@ -117,7 +117,7 @@ public class ClassFragment extends BaseFragment implements ClassInterface {
         /**
          * Constructor
          */
-        public ClassesAsyncTask() {}
+        /*package*/ ClassesAsyncTask() {}
 
         /**
          * {@inheritDoc}

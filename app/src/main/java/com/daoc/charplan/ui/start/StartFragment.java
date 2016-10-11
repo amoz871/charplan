@@ -115,7 +115,7 @@ public class StartFragment extends BaseFragment {
          *
          * @param fragmentManager used by the adapter.
          */
-        public StartPageAdapter(FragmentManager fragmentManager) {
+        /*package*/ StartPageAdapter(FragmentManager fragmentManager) {
             super(fragmentManager);
         }
 

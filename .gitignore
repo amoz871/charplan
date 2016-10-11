@@ -12,3 +12,4 @@
 gradle.properties
 documentation/.*
 external/~*
+projectFilesBackup/
