@@ -37,11 +37,6 @@ public class SlidingTabLayout extends HorizontalScrollView {
     private final int mTitleOffset;
 
     /**
-     * Used to depict if the tabs should be distributed evenly.
-     */
-    private boolean mDistributeEvenly;
-
-    /**
      * {@link ViewPager} to hold the Fragments.
      */
     private ViewPager mViewPager;
@@ -56,17 +51,9 @@ public class SlidingTabLayout extends HorizontalScrollView {
         setHorizontalScrollBarEnabled(false);
         // Make sure that the Tab Strips fills this View
         setFillViewport(true);
-        setDistributeEvenly();
         mTitleOffset = (int) getResources().getDimension(R.dimen.tab_title_offset);
         mTabStrip = new SlidingTabStrip(context);
         addView(mTabStrip, LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
-    }
-
-    /**
-     * Called if the tabs should be distributed evenly in the {@link LinearLayout}.
-     */
-    public void setDistributeEvenly() {
-        mDistributeEvenly = true;
     }
 
     /**
@@ -85,6 +72,7 @@ public class SlidingTabLayout extends HorizontalScrollView {
     public void setViewPager(final ViewPager viewPager) {
         mTabStrip.removeAllViews();
         mViewPager = viewPager;
+        setFillViewport(true);
         final DataSetObserver observer = new DataSetObserver() {
             /**
              * {@inheritDoc}
@@ -123,20 +111,12 @@ public class SlidingTabLayout extends HorizontalScrollView {
                 tabView = (LinearLayout) mTabStrip.getChildAt(index);
             }
 
-            if (mDistributeEvenly) {
-                LinearLayout.LayoutParams layoutParams
-                    = (LinearLayout.LayoutParams) tabView.getLayoutParams();
-                if (layoutParams != null) {
-                    layoutParams.width = 0;
-                    layoutParams.weight = 1;
-                    tabView.setLayoutParams(layoutParams);
-                    Log.d("Layout params set to even weight");
-                } else {
-                    Log.e("Layout params NULL!");
-                }
-            }
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                    new LayoutParams(0, LayoutParams.WRAP_CONTENT));
+            layoutParams.weight = 1;
+            tabView.setLayoutParams(layoutParams);
 
-            final TextView titleView = (TextView) tabView.findViewById(android.R.id.text1);
+            final TextView titleView = tabView.findViewById(android.R.id.text1);
             if (titleView != null) {
                 titleView.setText(adapter.getPageTitle(index).toString());
 
@@ -151,6 +131,18 @@ public class SlidingTabLayout extends HorizontalScrollView {
                 }
             }
         }
+    }
+
+    /**
+     * Sets the title in the give index in the {@link SlidingTabLayout}.
+     *
+     * @param title The title to set.
+     * @param index The index of the layout.
+     */
+    public void setTitle(String title, int index) {
+        final LinearLayout tabView = (LinearLayout) mTabStrip.getChildAt(index);
+        final TextView titleView = tabView.findViewById(android.R.id.text1);
+        titleView.setText(title);
     }
 
     /**
