@@ -13,7 +13,10 @@ import com.daoc.charplan.model.Skill;
 import com.daoc.charplan.model.Spec;
 import com.daoc.charplan.ui.common.AbstractListItem;
 import com.daoc.charplan.ui.common.ListItem;
+import com.daoc.charplan.ui.common.Separator;
 import com.daoc.charplan.util.Log;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -84,8 +87,13 @@ public class SkillsAdapter extends RecyclerView.Adapter<SkillsAdapter.ItemViewHo
      */
     public void addContent(List<Spec> specs) {
         mSpecs.clear();
+        String title = "";
         if (specs != null && specs.isEmpty()) {
             for (Spec spec : specs) {
+                if (!title.equals(spec.getTitle())) {
+                    title = spec.getTitle();
+                    mSpecs.add(new Separator(title));
+                }
                 mSpecs.add(spec);
             }
         }
@@ -100,7 +108,7 @@ public class SkillsAdapter extends RecyclerView.Adapter<SkillsAdapter.ItemViewHo
         /**
          * Constructor for ItemViewHolder.
          */
-        public ItemViewHolder(ViewGroup parent, int resId) {
+        public ItemViewHolder(@NotNull ViewGroup parent, int resId) {
             super(LayoutInflater.from(parent.getContext()).inflate(resId, parent, false));
         }
 
@@ -130,11 +138,11 @@ public class SkillsAdapter extends RecyclerView.Adapter<SkillsAdapter.ItemViewHo
          */
         public SpecViewHolder(ViewGroup parent, int resId) {
             super(parent, resId);
-            mCardView = (CardView) itemView.findViewById(R.id.spec_item_view);
-            mNameTextView = (TextView) itemView.findViewById(R.id.spec_text_view);
-            mDecreaseButton = (Button) itemView.findViewById(R.id.spec_decrease_button);
-            mLevelTextView = (TextView) itemView.findViewById(R.id.spec_level_text);
-            mIncreaseButton = (Button) itemView.findViewById(R.id.spec_increase_button);
+            mCardView = itemView.findViewById(R.id.spec_item_view);
+            mNameTextView = itemView.findViewById(R.id.spec_text_view);
+            mDecreaseButton = itemView.findViewById(R.id.spec_decrease_button);
+            mLevelTextView = itemView.findViewById(R.id.spec_level_text);
+            mIncreaseButton = itemView.findViewById(R.id.spec_increase_button);
         }
 
         /**

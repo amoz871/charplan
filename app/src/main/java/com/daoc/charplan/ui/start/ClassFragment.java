@@ -19,6 +19,8 @@ import com.daoc.charplan.ui.character.CharacterActivity;
 import com.daoc.charplan.ui.common.BaseFragment;
 import com.daoc.charplan.util.Log;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 
 /**
@@ -97,9 +99,8 @@ public class ClassFragment extends BaseFragment implements ClassInterface {
      *
      * @param view root view of {@link ClassFragment}.
      */
-    private void initializeRecyclerView(View view) {
-        final RecyclerView classesRecyclerView
-                = (RecyclerView) view.findViewById(R.id.classes_recycler_view);
+    private void initializeRecyclerView(@NotNull View view) {
+        final RecyclerView classesRecyclerView = view.findViewById(R.id.classes_recycler_view);
         if (mClassAdapter == null) {
             mClassAdapter = new ClassAdapter(getActivity(), mRealmId, this);
             classesRecyclerView.setItemAnimator(new DefaultItemAnimator());

@@ -3,6 +3,8 @@ package com.daoc.charplan.ui.character;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +17,8 @@ import com.daoc.charplan.provider.DbHelper;
 import com.daoc.charplan.ui.common.BaseFragment;
 import com.daoc.charplan.util.Log;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 
 /**
@@ -24,6 +28,7 @@ public class SkillsFragment extends BaseFragment {
 
     private CharacterActivity mActivity;
     private List<Spec> mSpecs;
+    private SkillsAdapter mSkillsAdapter;
 
     /**
      * {@inheritDoc}
@@ -51,8 +56,15 @@ public class SkillsFragment extends BaseFragment {
      *
      * @param view root view of {@link SkillsFragment}.
      */
-    private void initializeRecyclerView(View view) {
-        new SkillsAsyncTask().execute();
+    private void initializeRecyclerView(@NotNull View view) {
+        final RecyclerView skillsRecyclerView = view.findViewById(R.id.skills_recycler_view);
+        if (mSkillsAdapter == null) {
+            mSkillsAdapter = new SkillsAdapter();
+            skillsRecyclerView.setItemAnimator(new DefaultItemAnimator());
+            skillsRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+            skillsRecyclerView.setAdapter(mSkillsAdapter);
+            new SkillsAsyncTask().execute();
+        }
     }
 
     /**
@@ -93,7 +105,7 @@ public class SkillsFragment extends BaseFragment {
          */
         @Override
         protected void onPostExecute(Void v) {
-            /*mSkillsAdapter.addContent(mSpecs);*/
+            mSkillsAdapter.addContent(mSpecs);
             Log.d("Found " + mSpecs.size() +
                     " specs for class " + mActivity.getPlayerClass().getTitle());
             for (Spec spec : mSpecs) {
@@ -104,7 +116,7 @@ public class SkillsFragment extends BaseFragment {
                     Log.d(skill.getId() + ": " + skill.getTitle());
                 }
                 Log.d("Found " + spec.getSpecSkills().size() +
-                        " base skills for spec: " + spec.getTitle());
+                        " spec skills for spec: " + spec.getTitle());
                 for (Skill skill : spec.getSpecSkills()) {
                     Log.d(skill.getId() + ": " + skill.getTitle());
                 }

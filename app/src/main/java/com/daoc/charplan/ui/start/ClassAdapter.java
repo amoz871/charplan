@@ -17,6 +17,8 @@ import com.daoc.charplan.ui.common.ListItem;
 import com.daoc.charplan.ui.common.Separator;
 import com.daoc.charplan.util.Log;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,7 +63,7 @@ public class ClassAdapter extends RecyclerView.Adapter<ClassAdapter.ItemViewHold
      * {@inheritDoc}
      */
     @Override
-    public ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ItemViewHolder onCreateViewHolder(@NotNull ViewGroup parent, int viewType) {
         ItemViewHolder viewHolder = null;
         switch (ListItem.ListType.valueOf(viewType)) {
             case CLASS:
@@ -82,7 +84,7 @@ public class ClassAdapter extends RecyclerView.Adapter<ClassAdapter.ItemViewHold
      * {@inheritDoc}
      */
     @Override
-    public void onBindViewHolder(final ItemViewHolder holder, final int position) {
+    public void onBindViewHolder(@NotNull final ItemViewHolder holder, final int position) {
         holder.initializeViewHolderContents(position);
         if (holder.getViewType() == ListItem.ListType.CLASS) {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -139,7 +141,7 @@ public class ClassAdapter extends RecyclerView.Adapter<ClassAdapter.ItemViewHold
         /**
          * Constructor for ItemViewHolder.
          */
-        public ItemViewHolder(ViewGroup parent, int resId) {
+        public ItemViewHolder(@NotNull ViewGroup parent, int resId) {
             super(LayoutInflater.from(parent.getContext()).inflate(resId, parent, false));
         }
 
